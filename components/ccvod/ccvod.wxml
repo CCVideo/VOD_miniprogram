@@ -1,0 +1,65 @@
+<!--components/ccvod.wxml-->
+<view class='cc_video'>
+  <!-- 授权播放页面 -->
+  <view class='authBox' wx:if='{{isPlayAuth}}'>{{authmessage}}</view>
+
+  <view class='ccH5PlayerBox' wx:if='{{videoBoxShow}}'>
+    <!-- 跑马灯 -->
+    <cover-view wx:if="{{usingMarquee}}" class="marquee" style="{{'color:' + marqueeColor}}">{{marqueeText}}</cover-view>
+    
+    <!--音频背景图-->
+    <cover-view class="audio-bg" wx:if="{{isAudio}}">
+      <cover-image src='{{audioBg}}'></cover-image>
+    </cover-view>
+
+    <!-- video -->
+    <video id='ccVideo' class='ccVideo' src='{{videoSrc}}' controls='{{videoControls}}' show-center-play-btn='{{cPlayBtn}}' bindplay='vPlay' bindpause='vPause' bindwaiting='vWaiting' binderror='vError' bindprogress='vProgress' bindloadedmetadata='vLoadedmetadata'
+      poster='{{videoPoster}}' bindfullscreenchange='vFullScreen' bindtimeupdate='vTimeupdate' objectFit='fill'></video>
+
+    <!-- 自定义操作界面 -->
+    <cover-view wx:if='{{btnsShow}}' bindtap='clickBtnsShow' class='ccH5FadeOut'>
+
+      <!-- 播放暂停按钮 -->
+      <cover-view wx:if='{{interFaceShow}}' catchtap="videoPlay" class='ccPlayBtn'>
+        <cover-image class='btnBg' src='{{!isPlaying?"../../images/ccPlayBtn.png":"../../images/ccPauseBtn.png"}}'></cover-image>
+      </cover-view>
+
+      <!-- 全屏按钮 -->
+      <cover-view wx:if='{{interFaceShow}}' catchtap="fullScreen" class='fullBtn'>
+        <cover-image class='btnBg' src='../../images/ccFullBtn.png'></cover-image>
+      </cover-view>
+
+      <!-- 倍速按钮 -->
+      <cover-view wx:if='{{interFaceShow}}' class='ccH5sp' catchtap='clickSpShow'>{{ccH5spTxt}}</cover-view>
+
+      <!-- 倍速列表 -->
+      <cover-view class='ccH5spul' wx:if='{{spShow}}'>
+        <cover-view wx:for='{{spList}}' wx:key='{{index}}' data-key='{{index}}' data-num='{{spList[index].num}}' data-txt='{{spList[index].txt}}' hover-class="btnhover" catchtap='changeSpeed'>{{spList[index].txt}}</cover-view>
+      </cover-view>
+
+      <!-- 清晰度按钮 -->
+      <cover-view wx:if='{{interFaceShow}}' class='ccH5hd' catchtap='clickHdShow'>{{ccH5hdTxt}}</cover-view>
+
+      <!-- 清晰度列表 -->
+      <cover-view class='ccH5hdul' wx:if='{{hdShow}}'>
+        <cover-view wx:for='videoSrcList' wx:key='{{index}}' data-url='{{videoSrcList[index].playurl}}' data-txt='{{videoSrcList[index].desp}}' catchtap='changeQuality'>{{videoSrcList[index].desp}}</cover-view>
+      </cover-view>
+    </cover-view>
+  </view>
+
+  <!-- 自定义进度条 -->
+  <view class='ccH5Progress' wx:if='{{videoBoxShow}}'>
+
+    <!-- 播放时间 -->
+    <text class='ccCur'>{{ccH5TimeCurrent}}</text>
+    <view class='ccH5ProgressBar'>
+      <progress percent="{{percent}}" activeColor='#ff920a' backgroundColor='#a5a5a5' strokeWidth="2" />
+      <view class='ccH5DragBtn' style='left:{{dragBtnleft}}px;;' bindtouchmove='dragTime' bindtouchend='dragTimeEnd'>
+        <image class='btnBg' src='../../images/ccDragBtn.png'></image>
+      </view>
+    </view>
+
+    <!-- 总时间 -->
+    <text class='ccDur'>{{ccH5TimeTotal}}</text>
+  </view>
+</view>

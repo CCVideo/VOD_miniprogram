@@ -1,0 +1,6 @@
+/* pages/vc/vc.wxss */
+input{
+  border:1px solid #dddddd;
+  border-radius: 3px;
+  padding:8px 5px;
+}

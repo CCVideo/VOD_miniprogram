@@ -1,0 +1,4 @@
+/* pages/videolist/videolist.wxss */
+button{
+  margin-top: 5px;
+}

@@ -1,0 +1,7 @@
+<!--pages/index/index.wxml-->
+<view>
+  <ccvod id="ccVod" vid='{{vid}}' siteid='{{siteid}}' vc='{{vc}}' custom_id='{{custom_id}}' bind:videoPlay='handleVideoPlay' banDrag='{{false}}'/>
+</view>
+<view>
+    <view bindtap='toNext'>下一集</view>
+</view>

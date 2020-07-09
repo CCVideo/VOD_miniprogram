@@ -1,0 +1,7 @@
+<!--pages/videolist/videolist.wxml-->
+<view>
+  <button wx:for='{{vlist}}' wx:key='{{index}}' data-vid='{{vlist[index].vid}}' data-siteid='{{vlist[index].siteid}}' data-vc='{{vlist[index].vc}}' data-customid='{{vlist[index].customId}}' data-bandrag='{{vlist[index].banDrag}}' bindtap='toast' >{{vlist[index].title}}</button>
+  <!--授权验证
+  <button wx:for='{{vlist}}' wx:key='{{index}}' data-vid='{{vlist[index].vid}}' data-siteid='{{vlist[index].siteid}}'  data-vc='{{vlist[index].vc}}' bindtap='toast' >{{vlist[index].title}}</button>
+  -->
+</view>

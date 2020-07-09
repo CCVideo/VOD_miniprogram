@@ -1,0 +1,5 @@
+<!--pages/vc/vc.wxml-->
+<view>
+  <input type='number' name='{{vcvalue}}' bindinput='vcinput' placeholder='请输入验证码'></input>
+  <button bindtap='bindbtn'>确定</button>
+</view>
