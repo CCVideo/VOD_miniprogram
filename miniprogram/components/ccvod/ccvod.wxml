@@ -13,7 +13,7 @@
     </cover-view>
 
     <!-- video -->
-    <video id='ccVideo' class='ccVideo' src='{{videoSrc}}' controls='{{videoControls}}' show-center-play-btn='{{cPlayBtn}}' bindplay='vPlay' bindpause='vPause' bindwaiting='vWaiting' binderror='vError' bindprogress='vProgress' bindloadedmetadata='vLoadedmetadata'
+    <video id='ccVideo' class='ccVideo' src='{{videoSrc}}' controls='{{videoControls}}' show-center-play-btn='{{cPlayBtn}}' bindplay='vPlay' bindpause='vPause' bindwaiting='vWaiting' binderror='vError' bindprogress='vProgress' bindloadedmetadata='vLoadedmetadata' bindended="vEnd"
       poster='{{videoPoster}}' bindfullscreenchange='vFullScreen' bindtimeupdate='vTimeupdate' objectFit='fill'></video>
 
     <!-- 自定义操作界面 -->
